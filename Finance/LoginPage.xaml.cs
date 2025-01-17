@@ -31,5 +31,11 @@ namespace Finance
             managerWindow.Show();
             //this.Close();
         }
+
+        private void RegistrationButtonClick(object sender, MouseButtonEventArgs e)
+        {
+
+            NavigationService.Navigate(new RegistrationPage());
+        }
     }
 }

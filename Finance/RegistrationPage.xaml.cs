@@ -24,5 +24,15 @@ namespace Finance
         {
             InitializeComponent();
         }
+
+        private void BackButtonClick(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void Login_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

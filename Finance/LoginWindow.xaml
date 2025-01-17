@@ -19,6 +19,8 @@
                    FontWeight="Bold"
                    Foreground="{StaticResource TextColor}"/>
        
-        <Frame x:Name="LoginFrame" />                                     
+        <Frame x:Name="LoginFrame" 
+               Grid.Row="1"
+               NavigationUIVisibility="Hidden"/>                                     
     </Grid>
 </Window>
