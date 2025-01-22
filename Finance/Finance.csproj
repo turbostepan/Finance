@@ -74,6 +74,7 @@
     <Compile Include="SpendingsPage.xaml.cs">
       <DependentUpon>SpendingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HomePage.xaml.cs">

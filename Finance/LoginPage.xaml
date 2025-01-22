@@ -20,7 +20,7 @@
           Width="200px"
           Height="30px"
           Margin="0 0 0 20px"/>
-            <PasswordBox x:Name="PasswordTextBox"
+            <PasswordBox x:Name="PasswordTextBox2"
               Width="200px"
               Height="30px"
               Margin="0 0 0 20px"/>
