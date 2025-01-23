@@ -13,17 +13,33 @@
              VerticalAlignment="Center"
              HorizontalAlignment="Center">
             <TextBlock Text="Авторизация"
+            HorizontalAlignment="Center"
+            FontWeight="Bold"
             FontSize="18px"
             Margin="0 0 0 20px"
                 Foreground="{StaticResource TextColor}"/>
+            <TextBlock Text="Логин"
+                 FontSize="16px"
+                 Foreground="{StaticResource TextColor}"/>
             <TextBox x:Name="LoginTextBox"
           Width="200px"
           Height="30px"
           Margin="0 0 0 20px"/>
+            <TextBlock Text="Пароль"
+      FontSize="16px"
+      Foreground="{StaticResource TextColor}"/>
             <PasswordBox x:Name="PasswordTextBox2"
               Width="200px"
               Height="30px"
-              Margin="0 0 0 20px"/>
+              Margin="0 0 0 0px"/>
+            <TextBlock Text="Вход по почте"
+                 HorizontalAlignment="Center"  
+                Cursor="Hand"
+                FontSize="16px" 
+                Foreground="{StaticResource SecondaryColor}"
+                 MouseDown="EmailButtonClick"
+                
+                       />
             <Button Content="Войти"
          Width="150px"
          Height="40px"
@@ -33,13 +49,15 @@
              Cursor="Hand"
              FontSize="16px" Click="Login_Button_Click"/>
 
-
             <TextBlock Text="Зарегистрироваться"
                 HorizontalAlignment="Center"
                 Margin="0 20px 0 0"
                 Cursor="Hand"
-                FontSize="16px"
+                FontSize="16px"     
                 Foreground="{StaticResource SecondaryColor}" MouseDown="RegistrationButtonClick"/>
+
+
+
         </StackPanel>
     </Grid>
 </Page>

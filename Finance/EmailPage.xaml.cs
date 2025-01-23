@@ -17,50 +17,48 @@ using System.Windows.Shapes;
 namespace Finance
 {
     /// <summary>
-    /// Логика взаимодействия для LoginPage.xaml
+    /// Логика взаимодействия для EmailPage.xaml
     /// </summary>
-    /// 
-
-    public partial class LoginPage : Page
+    public partial class EmailPage : Page
     {
         private string connectionString = "Server=DESKTOP-KG0LFL3\\SQLEXPRESS;Database=FINANCE;Trusted_Connection=True;";
-        public LoginPage()
+        public EmailPage()
         {
             InitializeComponent();
         }
 
-        private void Login_Button_Click(object sender, RoutedEventArgs e)
+        private void Email_Button_Click(object sender, RoutedEventArgs e)
         {
-            string login = LoginTextBox.Text;
-            string password = PasswordTextBox2.Password;
+            string code = RandomCode();
+            string email = Email.Text;
 
-            Users users = UserChek(login, password);
+
+            Users users = UserChek(email);
             if (users != null)
             {
-                ManagerWindow managerWindow = new ManagerWindow();
-                managerWindow.Show();
-                //this.Close();
+                MessageBox.Show(code, email, MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new CodePage());
             }
             else
             {
-                MessageBox.Show("Неверный логин или пароль.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Пользователь с такой почтой еще не зарегестрирован.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 
         }
 
-        private Users UserChek(string login, string password)
+        private Users UserChek(string email)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Login FROM Users WHERE Login = @login AND Password = @password";
+                    string query = "SELECT Email FROM Users WHERE Email = @email";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@login", login);
-                        command.Parameters.AddWithValue("@password", password);
+                        command.Parameters.AddWithValue("@Email", email);
+                        
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -68,7 +66,7 @@ namespace Finance
                             {
                                 return new Users
                                 {
-                                    Login = reader["Login"].ToString(),
+                                    Email = reader["Email"].ToString(),
 
                                 };
                             }
@@ -84,16 +82,20 @@ namespace Finance
             }
             return null;
         }
-        private void RegistrationButtonClick(object sender, MouseButtonEventArgs e)
+        private string RandomCode()
         {
-
-            NavigationService.Navigate(new RegistrationPage());
+            var random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            return new string(Enumerable.Repeat(chars, 3)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        private void EmailButtonClick(object sender, MouseButtonEventArgs e)
-        {
+  
 
-            NavigationService.Navigate(new EmailPage());
+        private void BackButtonClick(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new LoginPage());
         }
+    
     }
 }

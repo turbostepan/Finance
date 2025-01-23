@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,7 +20,7 @@ namespace Finance
   
     public partial class RegistrationPage : Page
     {
-        private string connectionString = "Server=510EC16;Database=FINANCE;Trusted_Connection=True;";
+        private string connectionString = "Server=DESKTOP-KG0LFL3\\SQLEXPRESS;Database=FINANCE;Trusted_Connection=True;";
         public RegistrationPage()
         {
             InitializeComponent();
@@ -52,12 +53,29 @@ namespace Finance
                 return false;
             }
         }
+
+        private string Hash(string password)
+        {
+            //SHA256   https://learn.microsoft.com/ru-ru/dotnet/api/system.security.cryptography.sha256.hashdata?view=net-9.0
+            using (SHA256 sha256 = SHA256.Create()) //создание
+            {
+                
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);//Как я допер пароль шифруется с помощью байтового массива??????????
+
+               
+                byte[] hashBytes = sha256.ComputeHash(passwordBytes); //Вычисляет хэшкод массива
+
+                
+                return Convert.ToBase64String(hashBytes);//обратно конвертирует для бд
+            }
+        }
         private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
             string name = NameTextBox.Text;
             string login = LoginTextBox2.Text;
             string email = Email.Text;
             string password = PasswordTextBox.Password;
+            NavigationService.GoBack();
 
 
 
