@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,7 +24,7 @@ namespace Finance
 
     public partial class LoginPage : Page
     {
-        private string connectionString = "Server=DESKTOP-KG0LFL3\\SQLEXPRESS;Database=FINANCE;Trusted_Connection=True;";
+        private string connectionString = "Server=510EC16;Database=FINANCE;Trusted_Connection=True;";
         public LoginPage()
         {
             InitializeComponent();
@@ -33,7 +34,17 @@ namespace Finance
         {
             string login = LoginTextBox.Text;
             string password = PasswordTextBox2.Password;
+            using (SHA256 hash = SHA256.Create())
+            {
+                byte[] bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                var builder = new StringBuilder();
 
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                password = builder.ToString();
+            }
             Users users = UserChek(login, password);
             if (users != null)
             {
