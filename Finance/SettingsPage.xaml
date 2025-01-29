@@ -9,10 +9,37 @@
       Title="SettingsPage">
 
     <Grid>
-        <TextBlock Text="Настройки"
-             FontSize="36px"
-             HorizontalAlignment="Center"
-             Margin="0 30px 0 0"
-             Foreground="{StaticResource SecondaryColor}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="MyTextBlock" Text="Настройки" 
+                   FontSize="36" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   Margin="0 30 0 0" 
+                   />
+
+        <StackPanel x:Name="MainStackPanel" Grid.Row="1" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center">
+            <Button Name="ToggleThemeButton" Content="Включить темную тему" 
+            Background="{StaticResource ElementsColor}" 
+            Width="350" 
+            Height="80" 
+            FontSize="24" 
+            FontWeight="Bold" 
+            Click="ToggleThemeButton_Click"/>
+
+            <Button Name="ExitButton" Content="Выйти из приложения" 
+            Background="{StaticResource ElementsColor}" 
+            Width="350" 
+            Height="80" 
+            FontSize="24" 
+            FontWeight="Bold" 
+            Margin="0 200 0 0" 
+            Click="ExitButton_Click"/>
+        </StackPanel>
+
     </Grid>
 </Page>
