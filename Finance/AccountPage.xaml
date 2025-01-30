@@ -5,14 +5,136 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Finance"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1000" d:DesignWidth="1900"
       Title="AccountPage">
 
     <Grid>
         <TextBlock Text="Аккаунт"
              FontSize="36px"
              HorizontalAlignment="Center"
-             Margin="0 30px 0 0"
+             Margin="0,70,0,325"
              Foreground="{StaticResource SecondaryColor}"/>
+
+
+        <StackPanel
+            
+       VerticalAlignment="Top"
+       HorizontalAlignment="Left" Height="251" Width="584" Margin="126,156,0,0">
+
+            <TextBlock Text="Новое Имя"
+      FontSize="16px"
+      Foreground="{StaticResource TextColor}"/>
+            <TextBox x:Name="NameTextBox1"
+    FontSize="22"                  
+    Width="587"
+    Height="30px"
+    Margin="0 0 0 5px"/>
+            <TextBlock Text="Новый Логин"
+      FontSize="16px"
+      Foreground="{StaticResource TextColor}"/>
+            <TextBox x:Name="LoginTextBox1"
+FontSize="22"                      
+Width="584"
+Height="30px"
+Margin="0 0 0 5px"/>
+            <TextBlock Text="Новый Email"
+      FontSize="16px"
+      Foreground="{StaticResource TextColor}"/>
+            <TextBox x:Name="Email1"
+FontSize="22"                      
+Width="581"
+Height="30px"
+Margin="0 0 0 5px"/>
+            <TextBlock Text="Новый Пароль"
+      FontSize="16px"
+      Foreground="{StaticResource TextColor}"/>
+            <TextBox x:Name="PasswordTextBox1"
+        Width="580"
+        Height="30px"
+        Margin="0 0 0 20px"
+        Background="White"
+        FontSize="22"               />
+        
+
+
+
+
+        </StackPanel>
+
+
+        <StackPanel
+       VerticalAlignment="Top"
+       HorizontalAlignment="Left" Height="251" Width="584" Margin="743,156,0,0">
+
+            <TextBlock Text="Имя"
+      FontSize="16px"
+      Foreground="{StaticResource TextColor}"/>
+            <TextBlock x:Name="NameTextBlock"
+    FontSize="22"                    
+    Foreground="{StaticResource SecondaryColor}"                   
+    Background="LightGray"                     
+    Width="587"
+    Height="30px"
+    Margin="0 0 0 5px"/>
+            <TextBlock Text="Логин"
+      FontSize="16px"
+      Foreground="{StaticResource TextColor}"/>
+            <TextBlock x:Name="LoginTextBlock"
+FontSize="22"                        
+Background="LightGray"  
+Foreground="{StaticResource SecondaryColor}"                           
+Width="584"
+Height="30px"
+Margin="0 0 0 5px"/>
+            <TextBlock Text="Email"
+
+      FontSize="16px"
+      Foreground="{StaticResource TextColor}"/>
+            <TextBlock x:Name="BlockEmail1"
+FontSize="22"                        
+Foreground="{StaticResource SecondaryColor}"                           
+Background="LightGray"                         
+Width="581"
+Height="30px"
+Margin="0 0 0 5px"/>
+            <TextBlock Text="Пароль"
+      FontSize="16px"
+      Foreground="{StaticResource TextColor}"/>
+            <TextBlock x:Name="PasswordTextBlock"
+                       
+         Text="Пароль защищен и не доступен для просмотра"               
+        FontSize="22"                
+        Background="LightGray"                 
+        Width="580"
+        Height="30px"
+        Margin="0 0 0 20px"/>
+           
+
+
+
+
+        </StackPanel>
+
+
+        <Button Name="ExitButton" Content="Выйти из аккаунта " 
+Background="{StaticResource ElementsColor}" 
+Foreground="{StaticResource SecondaryColor}"                
+Width="350" 
+Height="80" 
+FontSize="24" 
+FontWeight="Bold" 
+Margin="225,360,225,10" 
+Click="Exit_Button_Click"/>
+
+        <Button x:Name="NewButton" Content="Перезаписать" 
+Background="{StaticResource ElementsColor}"
+Foreground="{StaticResource SecondaryColor}"
+Width="350"
+Height="80"
+FontSize="24"
+FontWeight="Bold"
+Click="New_Button_Click"></Button>              
+        
     </Grid>
+    
 </Page>

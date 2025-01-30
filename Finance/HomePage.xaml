@@ -19,11 +19,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Основной счет:"
+                   Foreground="{StaticResource ResourceKey=ElementsColor}"
                    FontSize="48px"
                    Margin="30px 0 0 0"
                    VerticalAlignment="Center"
 />
         <TextBlock Text="0.0 руб" 
+                   Foreground="{StaticResource ResourceKey=SecondaryColor}"
                    Grid.Column="1" 
                    FontSize="48px"
                    HorizontalAlignment="Right"
@@ -33,11 +35,13 @@
         />
         <StackPanel Grid.Row="1">
             <TextBlock Text="Доходы"
+                   Foreground="{StaticResource ResourceKey=TextColor}"    
                    FontSize="36px"
                    HorizontalAlignment="Center"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Text="Расходы"
+                   Foreground="{StaticResource ResourceKey=TextColor}"
                    FontSize="36px"
                    HorizontalAlignment="Center"/>
 
@@ -48,7 +52,7 @@
                 Width="135"
                 Height="60px"
                 Background="{StaticResource ElementsColor}"
-            Foreground="{StaticResource TextColor}"
+            Foreground="{StaticResource SecondaryColor}"
             FontSize="20px"
                 FontWeight="Bold"/>
             <Button
@@ -56,7 +60,7 @@
             Width="301"
             Height="60px"
             Background="{StaticResource ElementsColor}"
-            Foreground="{StaticResource TextColor}"
+            Foreground="{StaticResource SecondaryColor}"
             FontSize="20px"
             FontWeight="Bold"
             Margin="20px 0 30px 0"/>
@@ -65,7 +69,7 @@
             Width="296"
             Height="60px"
             Background="{StaticResource ElementsColor}"
-            Foreground="{StaticResource TextColor}"
+            Foreground="{StaticResource SecondaryColor}"
             FontSize="24px"
             FontWeight="Bold"/>
 

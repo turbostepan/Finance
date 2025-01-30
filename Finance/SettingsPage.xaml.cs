@@ -47,7 +47,9 @@ namespace Finance
                 Application.Current.Shutdown();
             }
 
-            private void ToggleThemeButton_Click(object sender, RoutedEventArgs e)
+
+        
+        private void ToggleThemeButton_Click(object sender, RoutedEventArgs e)
             {
 
                 App.IsDarkTheme = !App.IsDarkTheme;
@@ -59,7 +61,11 @@ namespace Finance
 
                 ApplyTheme();
             }
+        private void AccountButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AccountPage());
         }
+    }
     }
 
 

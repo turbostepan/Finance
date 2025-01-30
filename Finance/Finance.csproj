@@ -71,6 +71,7 @@
     <Compile Include="CodePage.xaml.cs">
       <DependentUpon>CodePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CurrentUser.cs" />
     <Compile Include="EmailPage.xaml.cs">
       <DependentUpon>EmailPage.xaml</DependentUpon>
     </Compile>

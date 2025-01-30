@@ -19,11 +19,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Доходы"
+           Foreground="{StaticResource ResourceKey=ElementsColor}"
            FontSize="48px"
            Margin="30px 0 0 0"
            VerticalAlignment="Center"
            />
         <TextBlock Text="0.0 руб." 
+           Foreground="{StaticResource ResourceKey=SecondaryColor}"        
            Grid.Column="1" 
            FontSize="48px"
            HorizontalAlignment="Right"
@@ -33,6 +35,7 @@
 />
         <StackPanel Grid.Row="1">
             <TextBlock Text="Доходы"
+           Foreground="{StaticResource TextColor}"            
            FontSize="36px"
            HorizontalAlignment="Center"/>
 
@@ -47,7 +50,7 @@
         Width="300px"
         Height="60px"
         Background="{StaticResource ElementsColor}"
-    Foreground="{StaticResource TextColor}"
+    Foreground="{StaticResource SecondaryColor}"
     FontSize="24px"
     HorizontalAlignment="Center"
         FontWeight="Bold"/>
@@ -56,7 +59,7 @@
     Width="300px"
     Height="60px"
     Background="{StaticResource SecondaryColor}"
-    Foreground="{StaticResource TextColor}"
+    Foreground="{StaticResource ElementsColor}"
     FontSize="24px"
     HorizontalAlignment="Center"
     FontWeight="Bold"
@@ -66,7 +69,7 @@
     Width="300px"
     Height="60px"
     Background="{StaticResource SecondaryColor}"
-    Foreground="{StaticResource TextColor}"
+    Foreground="{StaticResource ElementsColor}"
     FontSize="24px"
     HorizontalAlignment="Center"
     FontWeight="Bold"/>

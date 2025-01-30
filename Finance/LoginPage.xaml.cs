@@ -24,7 +24,7 @@ namespace Finance
 
     public partial class LoginPage : Page
     {
-        private string connectionString = "Server=510EC16;Database=FINANCE;Trusted_Connection=True;";
+        private string connectionString = "Server=DESKTOP-KG0LFL3\\SQLEXPRESS;Database=FINANCE;Trusted_Connection=True;";
         public LoginPage()
         {
             InitializeComponent();
@@ -48,16 +48,19 @@ namespace Finance
             Users users = UserChek(login, password);
             if (users != null)
             {
+                
+                CurrentUser.Id = users.Id;
+                CurrentUser.Name = users.Name;
+                CurrentUser.Login = users.Login;
+                CurrentUser.Email = users.Email;
+
                 ManagerWindow managerWindow = new ManagerWindow();
                 managerWindow.Show();
-                //this.Close();
             }
             else
             {
                 MessageBox.Show("Неверный логин или пароль.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
         }
 
         private Users UserChek(string login, string password)
@@ -67,7 +70,7 @@ namespace Finance
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Login FROM Users WHERE Login = @login AND Password = @password";
+                    string query = "SELECT Id, Name, Login, Email FROM Users WHERE Login = @login AND Password = @password";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@login", login);
@@ -79,16 +82,16 @@ namespace Finance
                             {
                                 return new Users
                                 {
+                                    Id = Convert.ToInt32(reader["Id"]),
+                                    Name = reader["Name"].ToString(),
                                     Login = reader["Login"].ToString(),
-
+                                    Email = reader["Email"].ToString()
                                 };
                             }
                         }
                     }
                 }
-
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show($"Произошла ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);

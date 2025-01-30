@@ -12,46 +12,72 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-//using System.Windows.Navigation;
-//using System.Windows.Shapes;
-//namespace Finance
-//{
-//    public partial class CodePage : Window
-//    {
-//        public CodePage()
-//        {
-//            InitializeComponent();
-//        }
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-//        private void Enter_Button_Click(object sender, RoutedEventArgs e)
-//        {
-//            // Проверка введенного кода
-//            string enteredCode = PasswordTextBox2.Text;
 
-//            string connectionString = @"Data Source=localhost;Initial Catalog=FINANCE;Integrated Security=True";
+namespace Finance
+{
+    public partial class CodePage : Page
+    {
+        private string connectionString = "Server=DESKTOP-KG0LFL3\\SQLEXPRESS;Database=FINANCE;Trusted_Connection=True;";
 
-//            using (SqlConnection connection = new SqlConnection(connectionString))
-//            {
-//                SqlCommand command = new SqlCommand("SELECT Code FROM Users WHERE Code = @code", connection);
-//                command.Parameters.AddWithValue("@code", enteredCode);
 
-//                connection.Open();
-//                SqlDataReader reader = command.ExecuteReader();
+        public CodePage()
+        {
+            InitializeComponent();
+        }
 
-//                // Если код существует в базе данных
-//                if (reader.HasRows)
-//                {
-//                    // Перейти на главную страницу
-//                    ManagerWindow managerWindow = new ManagerWindow();
-//                    managerWindow.Show();
-                    
-//                }
-//                else
-//                {
-//                    // Отобразить сообщение об ошибке
-//                    MessageBox.Show("Неверный код", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-//                }
-//            }
-//        }
-//    }
-//}
+        private void Enter_Button_Click(object sender, RoutedEventArgs e)
+        {
+            string enteredCode = PasswordTextBox2.Text;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT(*) FROM Users WHERE Code = @Code";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Code", enteredCode);
+
+                    int result = (int)command.ExecuteScalar();
+
+                    if (result > 0)
+                    {
+              
+                        MessageBox.Show("Код верный! Вход выполнен.");
+
+                        ManagerWindow managerWindow = new ManagerWindow();
+                        managerWindow.Show();
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Неверный код. Попробуйте снова.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при подключении к базе данных: " + ex.Message);
+                }
+            }
+        }
+
+        private void ReturnButtonClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+          
+            
+                NavigationService.Navigate(new EmailPage());
+            
+        }
+
+        private void RegistrationButtonClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+           
+                NavigationService.Navigate(new RegistrationPage());
+            
+        }
+    }
+}

@@ -20,13 +20,45 @@ namespace Finance
   
     public partial class RegistrationPage : Page
     {
-        private string connectionString = "Server=510EC16;Database=FINANCE;Trusted_Connection=True;";
+        private string connectionString = "Server=DESKTOP-KG0LFL3\\SQLEXPRESS;Database=FINANCE;Trusted_Connection=True;";
         public RegistrationPage()
         {
             InitializeComponent();
         }
+        private bool IsUserExists(string login, string email)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT(*) FROM [Users] WHERE Login = @Login OR Email = @Email";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Login", login);
+                        command.Parameters.AddWithValue("@Email", email);
+
+                        int count = (int)command.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка при проверке уникальности пользователя: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return true; 
+            }
+        }
+
         private bool RegisterUser(Users user)
         {
+            if (IsUserExists(user.Login, user.Email))
+            {
+                MessageBox.Show("Пользователь с таким логином или email уже существует.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+                
+            }
+
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -39,8 +71,6 @@ namespace Finance
                         command.Parameters.AddWithValue("@Login", user.Login);
                         command.Parameters.AddWithValue("@Password", user.Password);
                         command.Parameters.AddWithValue("@Email", user.Email);
-                       
-
 
                         int result = command.ExecuteNonQuery();
                         return result > 0;
@@ -110,6 +140,9 @@ namespace Finance
         {
             NavigationService.GoBack();
         }
+
+
+
 
      
     }

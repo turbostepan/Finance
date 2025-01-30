@@ -23,7 +23,7 @@ namespace Finance
     /// </summary>
     public partial class EmailPage : Page
     {
-        private string connectionString = "Server=510EC16;Database=FINANCE;Trusted_Connection=True;";
+        private string connectionString = "Server=DESKTOP-KG0LFL3\\SQLEXPRESS;Database=FINANCE;Trusted_Connection=True;";
         public EmailPage()
         {
             InitializeComponent();

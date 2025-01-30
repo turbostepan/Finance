@@ -12,7 +12,7 @@
         <StackPanel Grid.Row="1"
              VerticalAlignment="Center"
              HorizontalAlignment="Center">
-            <TextBlock Text="Авторизация"
+            <TextBlock Text="Вход"
             HorizontalAlignment="Center"
             FontWeight="Bold"
             FontSize="18px"
