@@ -20,7 +20,7 @@ namespace Finance
 {
     public partial class CodePage : Page
     {
-        private string connectionString = "Server=DESKTOP-KG0LFL3\\SQLEXPRESS;Database=FINANCE;Trusted_Connection=True;";
+        private string connectionString = "Server=510EC16;Database=FINANCE;Trusted_Connection=True;";
 
 
         public CodePage()
@@ -30,6 +30,7 @@ namespace Finance
 
         private void Enter_Button_Click(object sender, RoutedEventArgs e)
         {
+         
             string enteredCode = PasswordTextBox2.Text;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -43,9 +44,11 @@ namespace Finance
 
                     int result = (int)command.ExecuteScalar();
 
+                
                     if (result > 0)
                     {
-              
+                        //CurrentUser.Id = users.Id;
+
                         MessageBox.Show("Код верный! Вход выполнен.");
 
                         ManagerWindow managerWindow = new ManagerWindow();
@@ -63,8 +66,9 @@ namespace Finance
                     MessageBox.Show("Ошибка при подключении к базе данных: " + ex.Message);
                 }
             }
-        }
 
+        }
+      
         private void ReturnButtonClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
           

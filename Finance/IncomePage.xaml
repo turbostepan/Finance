@@ -18,62 +18,59 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Доходы"
-           Foreground="{StaticResource ResourceKey=ElementsColor}"
-           FontSize="48px"
-           Margin="30px 0 0 0"
-           VerticalAlignment="Center"
-           />
-        <TextBlock Text="0.0 руб." 
-           Foreground="{StaticResource ResourceKey=SecondaryColor}"        
-           Grid.Column="1" 
-           FontSize="48px"
-           HorizontalAlignment="Right"
-           Margin="0 0 50px 0"
-           VerticalAlignment="Center"
-           FontWeight="Bold"
-/>
+        <TextBlock 
+        Text="Доходы"
+        Foreground="{StaticResource ResourceKey=ElementsColor}"
+        FontSize="48px"
+        Margin="30px 0 0 0"
+        VerticalAlignment="Center"/>
+        <TextBlock x:Name="TotalIncomeTextBlock"
+        Text="0.0 руб." 
+        Foreground="{StaticResource ResourceKey=SecondaryColor}"        
+        Grid.Column="1" 
+        FontSize="48px"
+        HorizontalAlignment="Right"
+        Margin="0 0 50px 0"
+        VerticalAlignment="Center"
+        FontWeight="Bold"/>
         <StackPanel Grid.Row="1">
             <TextBlock Text="Доходы"
-           Foreground="{StaticResource TextColor}"            
-           FontSize="36px"
-           HorizontalAlignment="Center"/>
-
+            Foreground="{StaticResource TextColor}"            
+            FontSize="36px"
+            HorizontalAlignment="Center"/>
             <vlc:PieChart Name="pieChart"
-                          Height = "322"
-                          Margin="0 5px 0 0"/>
+            Height="322"
+            Margin="0 5px 0 0"/>
         </StackPanel>
-
         <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
             <Button
-        Content="Выбрать период"
-        Width="300px"
-        Height="60px"
-        Background="{StaticResource ElementsColor}"
-    Foreground="{StaticResource SecondaryColor}"
-    FontSize="24px"
-    HorizontalAlignment="Center"
-        FontWeight="Bold"/>
+            Content="Выбрать период"
+            Width="300px"
+            Height="60px"
+            Background="{StaticResource ElementsColor}"
+            Foreground="{StaticResource SecondaryColor}"
+            FontSize="24px"
+            HorizontalAlignment="Center"
+            FontWeight="Bold" Click="Button_Click"/>
             <Button
-    Content="Добавить доходы"
-    Width="300px"
-    Height="60px"
-    Background="{StaticResource SecondaryColor}"
-    Foreground="{StaticResource ElementsColor}"
-    FontSize="24px"
-    HorizontalAlignment="Center"
-    FontWeight="Bold"
-    Margin="0 100px 0 30px"/>
+            Content="Добавить доходы"
+            Width="300px"
+            Height="60px"
+            Background="{StaticResource SecondaryColor}"
+            Foreground="{StaticResource ElementsColor}"
+            FontSize="24px"
+            HorizontalAlignment="Center"
+            FontWeight="Bold"
+            Margin="0 100px 0 30px" Click="Button_Click_1"/>
             <Button
-    Content="Добавить категорию"
-    Width="300px"
-    Height="60px"
-    Background="{StaticResource SecondaryColor}"
-    Foreground="{StaticResource ElementsColor}"
-    FontSize="24px"
-    HorizontalAlignment="Center"
-    FontWeight="Bold"/>
-
+            Content="Добавить категорию"
+            Width="300px"
+            Height="60px"
+            Background="{StaticResource SecondaryColor}"
+            Foreground="{StaticResource ElementsColor}"
+            FontSize="24px"
+            HorizontalAlignment="Center"
+            FontWeight="Bold" Click="Button_Click_2"/>
         </StackPanel>
     </Grid>
 </Page>
